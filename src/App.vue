@@ -5,5 +5,6 @@ import NavBar from './views/NavBar.vue'
 <template>
   <main>
     <NavBar/>
+    lorem
   </main>
 </template>

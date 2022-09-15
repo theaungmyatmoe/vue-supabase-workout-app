@@ -1,3 +1,10 @@
+<script setup>
+import {useNavbarToggle} from "@/composables/navbar-toggle";
+
+const {open, toggle} = $(useNavbarToggle())
+
+</script>
+
 <template>
   <div>
     <nav class="bg-indigo-600 px-12 py-3 sm:py-2">
@@ -37,8 +44,11 @@
           </router-link>
         </div>
 
-        <!--      Menu btn -->
-        <button class="group sm:hidden">
+        <!--      Mobile menu btn -->
+        <button
+            class="group sm:hidden"
+            @click="toggle"
+        >
           <svg class="w-8 h-8 text-white group-hover:opacity-90" aria-hidden="true" fill="currentColor"
                viewBox="0 0 20 20"
                xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +61,10 @@
     </nav>
 
     <!--      Mobile Nav -->
-    <div class="bg-indigo-600 pb-2 drop-shadow-sm drop-shadow-indigo-100  sm:hidden ">
+    <div
+        class="absolute w-full bg-indigo-600 pb-2 drop-shadow-sm drop-shadow-indigo-100  sm:opacity-0 sm:invisible sm:sr-only"
+        v-show="open"
+    >
       <ul class="px-10 py-3 flex flex-col gap-y-2">
         <li class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">Home</li>
         <li class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">Login</li>
