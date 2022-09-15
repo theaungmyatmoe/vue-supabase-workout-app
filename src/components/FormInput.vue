@@ -1,0 +1,28 @@
+<script lang="ts" setup>
+import {Input} from "postcss";
+
+const {type, modelValue, label, placeholder} = defineProps<{
+  type: string,
+  modelValue: any,
+  label: string,
+  placeholder: string
+}>()
+defineEmits<{
+  (e: 'update:modelValue'): void,
+}>();
+</script>
+
+<template>
+  <div>
+    <label class="block mb-3 text-sm font-medium text-gray-50"> {{ label }}</label>
+    <input
+        :type="type"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring focus:ring-3 focus:ring-indigo-400 block w-full p-2.5"
+        :placeholder="placeholder"
+        required="">
+  </div>
+</template>
+
