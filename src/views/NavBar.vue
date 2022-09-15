@@ -7,13 +7,16 @@ const {on: is_open, toggle} = $(useToggle())
 
 <template>
   <div>
-    <nav class="bg-indigo-600 px-12 py-3 sm:py-2">
+    <nav
+        class="bg-indigo-600 px-12 py-3 sm:py-2  backdrop-filter backdrop-blur-sm bg-opacity-90"
+        :class="!is_open ? 'shadow shadow-indigo-50/20' : ''"
+    >
       <div class="container md:max-w-4xl flex justify-between items-center ">
         <!--    Logo -->
         <div class="group flex items-center gap-x-2 md:gap-x-3 ">
           <!--        Logo img -->
           <div
-              class="transition-colors duration-300 bg-white rounded-full p-2 shadow-sm ring ring-indigo-700 group-hover:opacity-95">
+              class="transition-colors duration-300 bg-white rounded-full p-2 shadow-sm ring ring-indigo-400 group-hover:opacity-95">
             <svg class="w-9 h-9 text-indigo-600" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
               <path
@@ -62,7 +65,7 @@ const {on: is_open, toggle} = $(useToggle())
 
     <!--      Mobile Nav -->
     <div
-        class="absolute w-full bg-indigo-600 pb-4 border-b border-indigo-400 shadow-lg  sm:opacity-0 sm:invisible sm:sr-only"
+        class="absolute w-full bg-indigo-600 pb-4  shadow-lg sm:opacity-0 sm:invisible sm:sr-only backdrop-filter backdrop-blur-sm bg-opacity-90 shadow shadow-indigo-50/20"
         v-show="is_open"
     >
       <ul class="px-10 py-3 flex flex-col gap-y-2">
