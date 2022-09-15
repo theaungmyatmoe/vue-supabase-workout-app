@@ -8,6 +8,7 @@ specifiers:
   npm-run-all: ^4.1.5
   pinia: ^2.0.21
   postcss: ^8.4.16
+  sass: ^1.54.9
   tailwindcss: ^3.1.8
   typescript: ~4.7.4
   vite: ^3.0.9
@@ -27,9 +28,10 @@ devDependencies:
   autoprefixer: 10.4.11_postcss@8.4.16
   npm-run-all: 4.1.5
   postcss: 8.4.16
+  sass: 1.54.9
   tailwindcss: 3.1.8_postcss@8.4.16
   typescript: 4.7.4
-  vite: 3.1.1
+  vite: 3.1.1_sass@1.54.9
   vue-tsc: 0.40.13_typescript@4.7.4
 
 packages:
@@ -98,7 +100,7 @@ packages:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.1.1
+      vite: 3.1.1_sass@1.54.9
       vue: 3.2.39
     dev: true
 
@@ -830,6 +832,10 @@ packages:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
     dev: true
 
+  /immutable/4.1.0:
+    resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
+    dev: true
+
   /internal-slot/1.0.3:
     resolution: {integrity: sha512-O0DB1JC/sPyZl7cIo78n5dR7eUSwwpYPiXRhTzNxZVAMUuB8vlnRFyLxdrVToks6XPLVnFfbzaVd5WLjhgg+vA==}
     engines: {node: '>= 0.4'}
@@ -1283,6 +1289,16 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
+  /sass/1.54.9:
+    resolution: {integrity: sha512-xb1hjASzEH+0L0WI9oFjqhRi51t/gagWnxLiwUNMltA0Ab6jIDkAacgKiGYKM9Jhy109osM7woEEai6SXeJo5Q==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.1.0
+      source-map-js: 1.0.2
+    dev: true
+
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
     hasBin: true
@@ -1475,7 +1491,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/3.1.1:
+  /vite/3.1.1_sass@1.54.9:
     resolution: {integrity: sha512-hgxQWev/AL7nWYrqByYo8nfcH9n97v6oFsta9+JX8h6cEkni7nHKP2kJleNYV2kcGhE8jsbaY1aStwPZXzPbgA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -1498,6 +1514,7 @@ packages:
       postcss: 8.4.16
       resolve: 1.22.1
       rollup: 2.78.1
+      sass: 1.54.9
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
