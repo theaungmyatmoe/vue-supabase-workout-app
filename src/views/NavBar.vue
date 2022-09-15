@@ -1,7 +1,7 @@
 <script setup>
-import {useNavbarToggle} from "@/composables/navbar-toggle";
+import {useToggle} from "@/composables/toggle";
 
-const {open, toggle} = $(useNavbarToggle())
+const {on: is_open, toggle} = $(useToggle())
 
 </script>
 
@@ -63,7 +63,7 @@ const {open, toggle} = $(useNavbarToggle())
     <!--      Mobile Nav -->
     <div
         class="absolute w-full bg-indigo-600 pb-2 drop-shadow-sm drop-shadow-indigo-100  sm:opacity-0 sm:invisible sm:sr-only"
-        v-show="open"
+        v-show="is_open"
     >
       <ul class="px-10 py-3 flex flex-col gap-y-2">
         <li class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">Home</li>
