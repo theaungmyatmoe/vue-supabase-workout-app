@@ -41,9 +41,13 @@ const {on: is_open, toggle} = $(useToggle())
 
         <!--      Desktop nav -->
         <div class="hidden sm:flex gap-x-8">
-          <router-link to="" class="transition-colors duration-300 text-white hover:text-indigo-50">Home</router-link>
-          <router-link to="" class="transition-colors duration-300 text-white hover:text-indigo-50">Login</router-link>
-          <router-link to="" class="transition-colors duration-300 text-white hover:text-indigo-50">Sign Up
+          <router-link :to="{name:'Home'}" class="transition-colors duration-300 text-white hover:text-indigo-50">Home
+          </router-link>
+          <router-link :to="{name:'Home'}" class="transition-colors duration-300 text-white hover:text-indigo-50">
+            Login
+          </router-link>
+          <router-link :to="{name:'SignUp'}" class="transition-colors duration-300 text-white hover:text-indigo-50">Sign
+            Up
           </router-link>
         </div>
 
@@ -69,9 +73,15 @@ const {on: is_open, toggle} = $(useToggle())
         v-show="is_open"
     >
       <ul class="px-10 py-3 flex flex-col gap-y-2">
-        <li class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">Home</li>
-        <li class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">Login</li>
-        <li class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">Sign Up</li>
+        <router-link :to="{name:'Home'}" class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
+          Home
+        </router-link>
+        <router-link :to="{name:'Home'}" class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
+          Login
+        </router-link>
+        <router-link :to="{name:'SignUp'}" class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
+          Sign Up
+        </router-link>
       </ul>
     </div>
   </div>
