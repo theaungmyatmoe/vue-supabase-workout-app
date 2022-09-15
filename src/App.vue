@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-import {supabase} from "@/services/supabase.service";
-
-console.log(supabase)
+import NavBar from './views/NavBar.vue'
 </script>
 
 <template>
-  <div>
-    Hello world
-  </div>
+  <main>
+    <NavBar/>
+  </main>
 </template>
