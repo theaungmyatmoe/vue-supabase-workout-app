@@ -8,7 +8,11 @@ module.exports = {
         container: {
             center: true
         },
-        extend: {},
+        extend: {
+            fontFamily: {
+                'sans': ['Poppins', 'san-serif'],
+            },
+        },
     },
     plugins: [],
 }

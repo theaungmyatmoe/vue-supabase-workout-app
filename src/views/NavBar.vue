@@ -62,7 +62,7 @@ const {on: is_open, toggle} = $(useToggle())
 
     <!--      Mobile Nav -->
     <div
-        class="absolute w-full bg-indigo-600 pb-2 drop-shadow-sm drop-shadow-indigo-100  sm:opacity-0 sm:invisible sm:sr-only"
+        class="absolute w-full bg-indigo-600 pb-4 border-b border-indigo-400 shadow-lg  sm:opacity-0 sm:invisible sm:sr-only"
         v-show="is_open"
     >
       <ul class="px-10 py-3 flex flex-col gap-y-2">
