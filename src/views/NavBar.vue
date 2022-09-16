@@ -1,7 +1,16 @@
 <script lang="ts" setup>
 import {useToggle} from "@/composables/toggle";
+import {supabase} from "@/services/supabase";
+import {useAuthStore} from "@/stores/auth";
+import {computed} from "vue";
 
 const {on: is_open, toggle} = $(useToggle())
+const authStore = useAuthStore()
+const user = computed(() => authStore.user)
+
+const logout = async () => {
+  await supabase.auth.signOut()
+}
 
 </script>
 
@@ -43,12 +52,18 @@ const {on: is_open, toggle} = $(useToggle())
         <div class="hidden sm:flex gap-x-8">
           <router-link :to="{name:'Home'}" class="transition-colors duration-300 text-white hover:text-indigo-50">Home
           </router-link>
-          <router-link :to="{name:'Login'}" class="transition-colors duration-300 text-white hover:text-indigo-50">
+          <router-link v-if="user" :to="{name:'Home'}"
+                       class="transition-colors duration-300 text-white hover:text-indigo-50">Create
+          </router-link>
+          <router-link v-if="!user" :to="{name:'Login'}"
+                       class="transition-colors duration-300 text-white hover:text-indigo-50">
             Login
           </router-link>
-          <router-link :to="{name:'SignUp'}" class="transition-colors duration-300 text-white hover:text-indigo-50">Sign
-            Up
+
+          <router-link v-if="user" :to="{name:'SignUp'}"
+                       class="transition-colors duration-300 text-white hover:text-indigo-50">Logout
           </router-link>
+
         </div>
 
         <!--      Mobile menu btn -->

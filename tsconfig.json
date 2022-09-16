@@ -9,10 +9,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "isolatedModules": false,
+    "importsNotUsedAsValues": "remove"
   },
-
   "references": [
     {
       "path": "./tsconfig.config.json"
