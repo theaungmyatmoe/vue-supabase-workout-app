@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import {useToggle} from "@/composables/toggle";
 
 const {on: is_open, toggle} = $(useToggle())
