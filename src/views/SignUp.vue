@@ -16,10 +16,9 @@ const router = useRouter();
 const login = async () => {
 
   // no email confirmation
-  const {error} = await supabase.auth.api.createUser({
+  const {error} = await supabase.auth.signUp({
     email: user.email,
     password: user.password,
-    email_confirm: false,
   })
 
   if (error) {
