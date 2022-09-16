@@ -7,9 +7,8 @@ import {useAuthStore} from "@/stores/auth";
 const authStore = useAuthStore()
 
 supabase.auth.onAuthStateChange((_, session) => {
-  console.log(session)
-
-  authStore.setUser(session)
+  console.log('change')
+  authStore.setUser(session!)
 })
 </script>
 

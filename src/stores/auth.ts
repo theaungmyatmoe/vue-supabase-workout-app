@@ -1,15 +1,23 @@
 import {defineStore} from "pinia";
-
-import {Session} from '@supabase/supabase-js'
+import {supabase} from "@/services/supabase";
+import {useRouter} from "vue-router";
 
 export const useAuthStore = defineStore('auth', () => {
     let user = $ref<object | null>(null)
 
-    const setUser = (payload: Session) => user = payload
+    // temp type
+    const setUser = (payload: object) => user = payload
+    const router = useRouter();
+
+    const logoutUser = async () => {
+        await supabase.auth.signOut()
+        await router.push({name: "Home"})
+    };
 
     return $$({
         user,
 
         setUser,
+        logoutUser
     })
 })

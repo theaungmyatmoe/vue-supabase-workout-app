@@ -1,15 +1,16 @@
 <script lang="ts" setup>
 import {useToggle} from "@/composables/toggle";
-import {supabase} from "@/services/supabase";
 import {useAuthStore} from "@/stores/auth";
 import {computed} from "vue";
+import {useRouter} from "vue-router";
 
 const {on: is_open, toggle} = $(useToggle())
 const authStore = useAuthStore()
 const user = computed(() => authStore.user)
 
+
 const logout = async () => {
-  await supabase.auth.signOut()
+  await authStore.logoutUser()
 }
 
 </script>
