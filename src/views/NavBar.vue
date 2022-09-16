@@ -43,7 +43,7 @@ const {on: is_open, toggle} = $(useToggle())
         <div class="hidden sm:flex gap-x-8">
           <router-link :to="{name:'Home'}" class="transition-colors duration-300 text-white hover:text-indigo-50">Home
           </router-link>
-          <router-link :to="{name:'Home'}" class="transition-colors duration-300 text-white hover:text-indigo-50">
+          <router-link :to="{name:'Login'}" class="transition-colors duration-300 text-white hover:text-indigo-50">
             Login
           </router-link>
           <router-link :to="{name:'SignUp'}" class="transition-colors duration-300 text-white hover:text-indigo-50">Sign

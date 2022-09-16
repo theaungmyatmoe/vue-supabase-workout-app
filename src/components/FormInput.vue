@@ -5,7 +5,7 @@ const {type, modelValue, label, placeholder} = defineProps<{
   type: string,
   modelValue: any,
   label: string,
-  placeholder: string
+  placeholder: string,
 }>()
 defineEmits<{
   (e: 'update:modelValue'): void,
@@ -20,9 +20,9 @@ defineEmits<{
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
 
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring focus:ring-3 focus:ring-indigo-400 block w-full p-2.5"
+        class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring focus:ring-3 focus:ring-indigo-400 block w-full p-2.5"
         :placeholder="placeholder"
-        required="">
+    >
   </div>
 </template>
 
