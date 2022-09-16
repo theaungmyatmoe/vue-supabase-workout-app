@@ -13,6 +13,7 @@ const user = $ref<User>({
 const router = useRouter();
 
 const login = async () => {
+  // @ts-ignore
   let {error} = await supabase.auth.signIn(user)
 
   if (error) {

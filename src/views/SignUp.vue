@@ -1,20 +1,18 @@
 <script lang="ts" setup>
 import FormInput from "@/components/FormInput.vue";
-import type {User} from "@/global/user.types";
 import {supabase} from "@/services/supabase";
 import {useRouter} from "vue-router";
 
-const user = $ref<User>({
+const user = $ref({
   username: '',
   email: '',
   password: '',
-  confirmPassword: ''
+  confirmPassword: '',
 })
 
 const router = useRouter();
 
 const login = async () => {
-
   // no email confirmation
   const {error} = await supabase.auth.signUp({
     email: user.email,
