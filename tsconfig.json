@@ -12,9 +12,7 @@
       "@/*": [
         "./src/*"
       ]
-    },
-    "isolatedModules": false,
-    "importsNotUsedAsValues": "remove"
+    }
   },
   "references": [
     {

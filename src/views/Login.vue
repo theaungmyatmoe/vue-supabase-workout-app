@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import FormInput from "@/components/FormInput.vue";
-import type {User} from "@/global/user.types";
+import type {User} from "@/types/user.types";
 import {supabase} from "@/services/supabase";
 import {useRouter} from "vue-router";
 

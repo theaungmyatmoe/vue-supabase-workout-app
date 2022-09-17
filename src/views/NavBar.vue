@@ -2,7 +2,6 @@
 import {useToggle} from "@/composables/toggle";
 import {useAuthStore} from "@/stores/auth";
 import {computed} from "vue";
-import {useRouter} from "vue-router";
 
 const {on: is_open, toggle} = $(useToggle())
 const authStore = useAuthStore()
@@ -61,8 +60,12 @@ const logout = async () => {
             Login
           </router-link>
 
-          <router-link v-if="user" :to="{name:'SignUp'}"
-                       class="transition-colors duration-300 text-white hover:text-indigo-50">Logout
+          <router-link
+              v-if="user"
+              @click="logout"
+              to=""
+              class="transition-colors duration-300 text-white hover:text-indigo-50"
+          >Logout
           </router-link>
 
         </div>
