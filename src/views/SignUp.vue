@@ -2,22 +2,20 @@
 import FormInput from "@/components/FormInput.vue";
 import {supabase} from "@/services/supabase";
 import {useRouter} from "vue-router";
+import {$ref} from "vue/macros";
+import type {User} from "@/types/user.types";
 
-const user = $ref({
-  username: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-})
+const email = $ref('')
+const password = $ref('')
+const confirmPassword = $ref('')
 
 const router = useRouter();
 
 const login = async () => {
-  // no email confirmation
-  const {error} = await supabase.auth.signUp({
-    email: user.email,
-    password: user.password,
-  })
+
+  const user: User = {email, password, confirmPassword}
+
+  const {error} = await supabase.auth.signUp(user)
 
   if (error) {
     alert(error.message)
@@ -31,7 +29,7 @@ const login = async () => {
 </script>
 
 <template>
-  <div class="bg-indigo-600 mx-4 px-6 py-8 rounded-lg md:max-w-2xl md:mx-auto ">
+  <div class="bg-indigo-600 mx-4 my-8 px-6 py-6 rounded-lg md:max-w-xl md:mx-auto">
     <h2 class="text-gray-50 text-xl font-medium mb-6 sm:mb-8 sm:text-2xl">Sign Up</h2>
 
     <!--    sign up form -->
@@ -39,32 +37,26 @@ const login = async () => {
         class="flex flex-col gap-y-6 mb-6"
         @click.prevent="login"
     >
-      <FormInput
-          label="Username"
-          type="text"
-          placeholder="@username"
-          v-model="user.username"
-      />
 
       <FormInput
           label="Email"
           type="email"
           placeholder="you@example.com"
-          v-model="user.email"
+          v-model="email"
       />
 
       <FormInput
           label="Password"
           type="password"
           placeholder="Enter your password"
-          v-model="user.password"
+          v-model="password"
       />
 
       <FormInput
           label="Confirm Password"
           type="password"
           placeholder="Confirm your password"
-          v-model="user.confirmPassword"
+          v-model="confirmPassword"
       />
 
       <button type="submit"

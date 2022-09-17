@@ -15,7 +15,7 @@ const handleInputChange = (event: Event) => (event.target as HTMLInputElement).v
 
 <template>
   <div>
-    <label class="block mb-3 text-sm font-medium text-gray-50"> {{ label }}</label>
+    <label class="block mb-2 text-sm font-medium text-gray-50"> {{ label }}</label>
     <input
         :type="type"
         :value="modelValue"
