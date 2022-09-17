@@ -95,11 +95,20 @@ const logout = async () => {
         <router-link :to="{name:'Home'}" class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
           Home
         </router-link>
-        <router-link :to="{name:'Home'}" class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
+        <router-link v-if="user" :to="{name:'Home'}"
+                     class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
+          Create
+        </router-link>
+        <router-link v-if="!user" :to="{name:'Login'}"
+                     class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
           Login
         </router-link>
-        <router-link :to="{name:'SignUp'}" class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
-          Sign Up
+        <router-link
+            v-if="user"
+            :to="{name:'Home'}"
+            @click="logout"
+            class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
+          Logout
         </router-link>
       </ul>
     </div>
