@@ -3,7 +3,7 @@
 const {type, modelValue, label, placeholder, className} = defineProps<{
   type: string,
   modelValue: string,
-  label: string,
+  label?: string,
   placeholder: string,
   className?: string
 }>()

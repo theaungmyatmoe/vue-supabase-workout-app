@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@headlessui/vue': ^1.7.2
+  '@heroicons/vue': ^2.0.11
   '@supabase/supabase-js': 2.0.0-rc.10
   '@types/node': ^16.11.56
   '@types/vuelidate': ^0.7.15
@@ -22,6 +24,8 @@ specifiers:
   vue-tsc: ^0.40.7
 
 dependencies:
+  '@headlessui/vue': 1.7.2_vue@3.2.39
+  '@heroicons/vue': 2.0.11_vue@3.2.39
   '@supabase/supabase-js': 2.0.0-rc.10
   '@types/vuelidate': 0.7.15
   '@vuelidate/core': 2.0.0-alpha.44_vue@3.2.39
@@ -77,6 +81,23 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@headlessui/vue/1.7.2_vue@3.2.39:
+    resolution: {integrity: sha512-nmmFpQxnAy6zgf5r0pwdAH3Qw2IsSbTgvkpov9RkEVE8A6aPAT4iaAaPEAzdI+sPL5Wby05mhciJXSqtkLu+vQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      vue: 3.2.39
+    dev: false
+
+  /@heroicons/vue/2.0.11_vue@3.2.39:
+    resolution: {integrity: sha512-nTfN4aZVCP8Xntt9Q9RvH+vDagFHA4zFCUge6oCdkBrELH1i6K9feubvnEMhRIYdwC+nWULqKyJP7iVoWkR6Eg==}
+    peerDependencies:
+      vue: '>= 3'
+    dependencies:
+      vue: 3.2.39
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

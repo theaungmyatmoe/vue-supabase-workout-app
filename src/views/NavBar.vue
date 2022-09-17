@@ -52,7 +52,7 @@ const logout = async () => {
         <div class="hidden sm:flex gap-x-8">
           <router-link :to="{name:'Home'}" class="transition-colors duration-300 text-white hover:text-indigo-50">Home
           </router-link>
-          <router-link v-if="user" :to="{name:'Home'}"
+          <router-link v-if="user" :to="{name:'CreateWorkout'}"
                        class="transition-colors duration-300 text-white hover:text-indigo-50">Create
           </router-link>
           <router-link v-if="!user" :to="{name:'Login'}"
@@ -95,7 +95,7 @@ const logout = async () => {
         <router-link :to="{name:'Home'}" class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
           Home
         </router-link>
-        <router-link v-if="user" :to="{name:'Home'}"
+        <router-link v-if="user" :to="{name:'CreateWorkout'}"
                      class="text-white bg-indigo-700 py-2 px-4 rounded-lg hover:bg-indigo-700/90">
           Create
         </router-link>
