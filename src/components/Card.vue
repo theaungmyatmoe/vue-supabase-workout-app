@@ -1,6 +1,6 @@
 <template>
   <div
-      class="flex flex-col justify-center items-center gap-y-4 bg-indigo-600 p-6 rounded-lg shadow-lg shadow-indigo-200 md:gap-y-6">
+      class="flex flex-col justify-center items-center gap-y-4 bg-indigo-600 p-6 rounded-lg shadow-lg shadow-indigo-300  md:gap-y-6">
     <!--          Workout type logo -->
     <div class="flex justify-center items-center bg-white rounded-full w-24 h-24 ring ring-4 ring-indigo-400">
       <svg class="w-16 h-16 text-indigo-600" width="24px" height="24px" viewBox="0 0 24 24" fill="none"

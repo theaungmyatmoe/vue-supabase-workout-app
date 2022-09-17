@@ -17,7 +17,7 @@ const logout = async () => {
 <template>
   <div>
     <nav
-        class="bg-indigo-600 px-5 py-3 sm:py-2  backdrop-filter backdrop-blur-sm bg-opacity-90"
+        class="bg-indigo-600 px-5 py-3 sm:px-8 sm:py-2 md:py-3  backdrop-filter backdrop-blur-sm bg-opacity-90"
         :class="!is_open ? 'shadow shadow-indigo-50/20' : ''"
     >
       <div class="container md:max-w-4xl flex justify-between items-center ">

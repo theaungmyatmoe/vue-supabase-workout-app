@@ -27,7 +27,7 @@ const login = async () => {
 </script>
 
 <template>
-  <div class="bg-indigo-600 mx-4 px-6 py-8 rounded-lg md:max-w-2xl md:mx-auto ">
+  <div class="bg-indigo-600 mx-4 px-6 py-8 rounded-lg sm:mx-auto sm:max-w-sm md:max-w-lg">
     <h2 class="text-gray-50 text-xl font-medium mb-6 sm:mb-8 sm:text-2xl">Login</h2>
     <form
         class="flex flex-col gap-y-6 mb-6"

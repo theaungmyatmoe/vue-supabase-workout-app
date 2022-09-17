@@ -30,7 +30,7 @@ const login = async () => {
 </script>
 
 <template>
-  <div class="bg-indigo-600 mx-4 my-8 px-6 py-6 rounded-lg md:max-w-xl md:mx-auto">
+  <div class="bg-indigo-600 mx-4 my-8 px-6 py-6 rounded-lg sm:mx-auto sm:max-w-sm md:max-w-lg">
     <h2 class="text-gray-50 text-xl font-medium mb-6 sm:mb-8 sm:text-2xl">Sign Up</h2>
 
     <!--    sign up form -->
