@@ -18,6 +18,7 @@ const login = async () => {
   const {error} = await supabase.auth.signUp(user)
 
   if (error) {
+    // TODO: handle error
     alert(error.message)
     return
   }

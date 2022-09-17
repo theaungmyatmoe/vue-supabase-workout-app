@@ -4,25 +4,24 @@ import type {User} from "@/types/user.types";
 import {supabase} from "@/services/supabase";
 import {useRouter} from "vue-router";
 
+const router = useRouter();
 
 const user = $ref<User>({
   email: '',
   password: '',
 })
 
-const router = useRouter();
-
 const login = async () => {
 
   let {error} = await supabase.auth.signInWithPassword(user)
 
   if (error) {
+    // TODO: handle error with ui
     alert(error.message)
     return;
   }
 
   await router.push({name: 'Home'})
-
 }
 
 </script>
