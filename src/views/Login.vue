@@ -5,17 +5,18 @@ import {supabase} from "@/services/supabase";
 import {useRouter} from "vue-router";
 import useVuelidate from '@vuelidate/core'
 import {email, required} from '@vuelidate/validators'
-import {$ref} from "vue/macros";
 import {TYPE, useToast} from "vue-toastification";
+import {useAuthStore} from "@/stores/auth";
 
 const router = useRouter();
 const toast = useToast();
+const authStore = useAuthStore()
+
 
 let user = $ref<User>({
   email: '',
   password: '',
 })
-let disable = $ref<boolean>(false)
 
 const rules = {
   email: {required, email},
@@ -27,11 +28,11 @@ const v$ = $(useVuelidate(rules, user))
 const login = async () => {
 
   const result = await v$.$validate()
-  disable = result ?? false;
 
   if (!result) return;
 
-  let {error} = await supabase.auth.signInWithPassword(user)
+  let {data, error} = await supabase.auth.signInWithPassword(user)
+
 
   if (error) {
     user = {
@@ -43,9 +44,21 @@ const login = async () => {
     return;
   }
 
+  if (!data || !data.session) {
+    toast("Please login again.", {
+      type: TYPE.ERROR
+    })
+    return;
+  }
+
+  // set session token
+  await authStore.setUser(data.session)
+
+  toast("Account logged in successfully.", {
+    type: TYPE.SUCCESS
+  })
   await router.push({name: 'Home'})
 }
-
 </script>
 
 <template>
@@ -83,8 +96,10 @@ const login = async () => {
       </div>
 
 
-      <button type="submit"
-              class="mt-2 transition-all ease-out duration-300 w-full px-4 py-2.5 flex justify-center items-center text-gray-50 bg-indigo-700 rounded-lg hover:bg-indigo-900/50">
+      <button
+          type="submit"
+          class="mt-2 transition-all ease-out duration-300 w-full px-4 py-2.5 flex justify-center items-center text-gray-50 bg-indigo-700 rounded-lg hover:bg-indigo-900/50"
+      >
         Login
       </button>
     </form>

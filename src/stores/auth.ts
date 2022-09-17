@@ -8,9 +8,8 @@ export const useAuthStore = defineStore('auth', () => {
 
     let user = $ref<Session | null>(null)
 
-    const setUser = (payload: Session) => {
+    const setUser = async (payload: Session) => {
         user = payload
-        console.log('login', user)
     }
 
     const logoutUser = async () => {
