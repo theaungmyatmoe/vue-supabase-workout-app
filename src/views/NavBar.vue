@@ -17,12 +17,12 @@ const logout = async () => {
 <template>
   <div>
     <nav
-        class="bg-indigo-600 px-12 py-3 sm:py-2  backdrop-filter backdrop-blur-sm bg-opacity-90"
+        class="bg-indigo-600 px-5 py-3 sm:py-2  backdrop-filter backdrop-blur-sm bg-opacity-90"
         :class="!is_open ? 'shadow shadow-indigo-50/20' : ''"
     >
       <div class="container md:max-w-4xl flex justify-between items-center ">
         <!--    Logo -->
-        <div class="group flex items-center gap-x-2 md:gap-x-3 ">
+        <div class="group flex items-center gap-x-2.5 md:gap-x-3 ">
           <!--        Logo img -->
           <div
               class="transition-colors duration-300 bg-white rounded-full p-2 shadow-sm ring ring-indigo-400 group-hover:opacity-95">
@@ -45,7 +45,7 @@ const logout = async () => {
             </svg>
           </div>
 
-          <h1 class="text-lg text-white font-bold md:font-bold group-hover:opacity-95">Workout Tracker</h1>
+          <h1 class="text-lg text-white font-semibold md:font-bold group-hover:opacity-95">Workout Tracker</h1>
         </div>
 
         <!--      Desktop nav -->
