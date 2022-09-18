@@ -22,7 +22,10 @@ const logout = async () => {
     >
       <div class="container md:max-w-4xl flex justify-between items-center ">
         <!--    Logo -->
-        <div class="group flex items-center gap-x-2.5 md:gap-x-3 ">
+        <router-link
+            :to="{name:'Home'}"
+            class="group flex items-center gap-x-2.5 md:gap-x-3 "
+        >
           <!--        Logo img -->
           <div
               class="transition-colors duration-300 bg-white rounded-full p-2 shadow-sm ring ring-indigo-400 group-hover:opacity-95">
@@ -46,14 +49,17 @@ const logout = async () => {
           </div>
 
           <h1 class="text-lg text-white font-semibold md:font-bold group-hover:opacity-95">Workout Tracker</h1>
-        </div>
+        </router-link>
 
         <!--      Desktop nav -->
         <div class="hidden sm:flex gap-x-8">
           <router-link :to="{name:'Home'}" class="transition-colors duration-300 text-white hover:text-indigo-50">Home
           </router-link>
-          <router-link v-if="user" :to="{name:'CreateWorkout'}"
-                       class="transition-colors duration-300 text-white hover:text-indigo-50">Create
+          <!--          TODO: remove for non-authenicated user -->
+          <!--          v-if="user" -->
+          <router-link :to="{name:'CreateWorkout'}"
+                       class="transition-colors duration-300 text-white hover:text-indigo-50">
+            Create
           </router-link>
           <router-link v-if="!user" :to="{name:'Login'}"
                        class="transition-colors duration-300 text-white hover:text-indigo-50">
