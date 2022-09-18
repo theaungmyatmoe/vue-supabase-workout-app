@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 
-const {type, modelValue, label, placeholder, className} = defineProps<{
-  type: string,
-  modelValue: string,
+const {type = 'text', modelValue = '', label = '', placeholder = '', className} = defineProps<{
+  type?: string,
+  modelValue: any,
   label?: string,
-  placeholder: string,
+  placeholder?: string,
   className?: string
 }>()
 
