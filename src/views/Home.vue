@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 
-import CardList from "@/components/CardList.vue";</script>
-
+import CardList from "@/components/CardList.vue";
+import LoadingPulse from "@/components/LoadingPulse.vue";
+</script>
 
 <template>
   <Suspense>
@@ -9,7 +10,7 @@ import CardList from "@/components/CardList.vue";</script>
       <CardList/>
     </template>
     <template #fallback>
-      Loading
+      <LoadingPulse/>
     </template>
   </Suspense>
 </template>

@@ -6,8 +6,7 @@ import {supabase} from "@/services/supabase";
 let {data: workouts, error} = await supabase
     .from('workouts')
     .select('*')
-
-console.log(workouts, error)
+    .order('id', {ascending: false})
 
 
 </script>
