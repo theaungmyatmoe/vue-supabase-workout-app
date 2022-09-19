@@ -1,16 +1,18 @@
 <script setup lang="ts">
-const {name, type} = defineProps<{
-  name: string,
-  type: string,
-}>()
+import {useRoute} from "vue-router";
+
+const {workout} = defineProps(['workout'])
+
 </script>
 
 <template>
-  <div
+  <router-link
+      :to="{name:'ShowWorkout', params:{id:workout.id}}"
       class="flex flex-col justify-center items-center gap-y-4 bg-indigo-600 p-6 rounded-lg shadow-lg shadow-indigo-300  md:gap-y-6">
     <!--          Workout type logo -->
     <div class="flex justify-center items-center bg-white rounded-full w-24 h-24 ring ring-4 ring-indigo-400">
-      <svg v-if="type ==='Strength'" class="w-16 h-16 text-indigo-600" width="24px" height="24px" viewBox="0 0 24 24"
+      <svg v-if="workout.type ==='Strength'" class="w-16 h-16 text-indigo-600" width="24px" height="24px"
+           viewBox="0 0 24 24"
            fill="none"
            xmlns="http://www.w3.org/2000/svg">
         <path
@@ -30,7 +32,8 @@ const {name, type} = defineProps<{
       </svg>
 
 
-      <svg v-if="type === 'Cardio'" class="w-16 h-16 stroke-indigo-600" xmlns="http://www.w3.org/2000/svg" width="48"
+      <svg v-if="workout.type === 'Cardio'" class="w-16 h-16 stroke-indigo-600" xmlns="http://www.w3.org/2000/svg"
+           width="48"
            height="48" fill="none"
            viewBox="0 0 48 48">
         <path stroke="" class="stroke-indigo-600" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -44,9 +47,9 @@ const {name, type} = defineProps<{
     <div>
             <span
                 class="transition-all duration-300 ease-out inline-block text-gray-50 bg-indigo-400 px-4 py-1 rounded-full text-sm tracking-wide hover:bg-opacity-90">
-              {{ type }}
+              {{ workout.type }}
             </span>
     </div>
-    <h3 class="mt-2 md:mt-0 text-gray-100 text-lg font-semibold sm:text-xl">{{ name }}</h3>
-  </div>
+    <h3 class="mt-2 md:mt-0 text-gray-100 text-lg font-semibold sm:text-xl">{{ workout.name }}</h3>
+  </router-link>
 </template>

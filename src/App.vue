@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import StickyNavBar from "@/views/StickyNavBar.vue";
+import LoadingPulse from "@/components/LoadingPulse.vue";
 </script>
 
 <template>
@@ -7,7 +8,14 @@ import StickyNavBar from "@/views/StickyNavBar.vue";
     <!--    Navbar -->
     <StickyNavBar/>
     <main class="container mt-8 sm:max-w-lg md:max-w-3xl lg:max-w-4xl">
-      <RouterView/>
+      <Suspense>
+        <template #default>
+          <RouterView/>
+        </template>
+        <template #fallback>
+          <LoadingPulse/>
+        </template>
+      </Suspense>
     </main>
   </section>
 </template>

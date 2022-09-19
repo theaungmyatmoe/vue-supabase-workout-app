@@ -1,0 +1,129 @@
+<script setup lang="ts">
+import {useRoute} from "vue-router";
+import {supabase} from "@/services/supabase";
+
+const route = useRoute();
+let id = route.params.id
+const {data: workout, error} = await supabase
+    .from('workouts')
+    .select()
+    .eq('id', id)
+    .single()
+console.log(workout)
+</script>
+
+<template>
+  <section class="mx-3">
+
+    <div
+        class="flex flex-col justify-center items-center gap-y-4 bg-indigo-600 p-6 rounded-lg shadow-lg shadow-indigo-300  md:max-w-xl md:gap-y-6 md:mx-auto">
+      <!--          Workout type logo -->
+      <div class="flex justify-center items-center bg-white rounded-full w-24 h-24 ring ring-4 ring-indigo-400">
+        <svg v-if="workout.type ==='Strength'" class="w-16 h-16 text-indigo-600" width="24px" height="24px"
+             viewBox="0 0 24 24"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M7.4 7H4.6C4.26863 7 4 7.26863 4 7.6V16.4C4 16.7314 4.26863 17 4.6 17H7.4C7.73137 17 8 16.7314 8 16.4V7.6C8 7.26863 7.73137 7 7.4 7Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path
+              d="M19.4 7H16.6C16.2686 7 16 7.26863 16 7.6V16.4C16 16.7314 16.2686 17 16.6 17H19.4C19.7314 17 20 16.7314 20 16.4V7.6C20 7.26863 19.7314 7 19.4 7Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path
+              d="M1 14.4V9.6C1 9.26863 1.26863 9 1.6 9H3.4C3.73137 9 4 9.26863 4 9.6V14.4C4 14.7314 3.73137 15 3.4 15H1.6C1.26863 15 1 14.7314 1 14.4Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path
+              d="M23 14.4V9.6C23 9.26863 22.7314 9 22.4 9H20.6C20.2686 9 20 9.26863 20 9.6V14.4C20 14.7314 20.2686 15 20.6 15H22.4C22.7314 15 23 14.7314 23 14.4Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round"/>
+        </svg>
+
+        <svg v-if="workout.type === 'Cardio'" class="w-16 h-16 stroke-indigo-600" xmlns="http://www.w3.org/2000/svg"
+             width="48"
+             height="48" fill="none"
+             viewBox="0 0 48 48">
+          <path stroke="" class="stroke-indigo-600" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M27.6807 22.2118C27.8415 22.363 28.0053 22.5055 28.1722 22.6393 29.4624 23.6741 30.8406 24.1185 32.1535 24.1888 34.3638 24.3072 36.33 23.3208 37.1292 22.9199 37.2195 22.8746 37.2949 22.8368 37.3541 22.8089 38.3531 22.3376 38.7809 21.1457 38.3097 20.1467 37.8384 19.1477 36.6465 18.7199 35.6475 19.1912 35.538 19.2429 35.4268 19.2965 35.314 19.351 34.4298 19.7778 33.4466 20.2524 32.3675 20.1945 31.8419 20.1664 31.2757 20.0008 30.6749 19.519 30.0497 19.0175 29.303 18.1038 28.5808 16.4473 27.9955 15.1048 27.1243 14.0645 25.8863 13.4742 24.6997 12.9085 23.4375 12.8842 22.3127 13.0177 19.298 13.3756 17.0073 15.1237 15.4492 16.7471 14.1664 18.0838 13.2092 19.5339 12.7399 20.245 12.6444 20.3897 12.569 20.5038 12.5153 20.5801 11.8793 21.4832 12.0958 22.7309 12.9988 23.3669 13.9019 24.0029 15.1496 23.7865 15.7856 22.8834 15.8974 22.7247 16.0204 22.5396 16.1574 22.3337 16.6574 21.5815 17.3423 20.5514 18.3351 19.5169 19.1172 18.7019 19.9928 17.9972 20.9571 17.534 20.734 18.1484 20.4808 18.8467 20.2244 19.5559 19.4848 21.6019 18.6606 23.8968 18.5277 24.3561 18.4064 24.7755 18.4437 25.1342 18.4718 25.3131 18.5035 25.5151 18.5569 25.6859 18.5997 25.8056 18.6852 26.0445 18.7983 26.27 18.8978 26.4525 19.1021 26.8276 19.3818 27.2607 19.6828 27.7002 20.293 28.5911 21.1147 29.6865 21.9297 30.7456 22.6495 31.6811 23.3825 32.612 23.9856 33.3778L24.2272 33.6847C24.5509 34.0961 24.8217 34.4411 25.0209 34.6999 25.1107 34.8165 25.1718 34.8977 25.2111 34.9504 25.2498 35.0833 25.2991 35.276 25.3579 35.529 25.4747 36.0318 25.6094 36.6864 25.7514 37.4051 25.8427 37.8673 25.9377 38.3599 26.0315 38.8469 26.221 39.8295 26.4061 40.7901 26.548 41.4317 26.7864 42.5103 27.854 43.1913 28.9325 42.9529 30.011 42.7144 30.6921 41.6468 30.4537 40.5683 30.3233 39.9784 30.1574 39.1177 29.9759 38.1757 29.8793 37.674 29.7781 37.1491 29.6756 36.6299 29.5322 35.904 29.3868 35.1948 29.254 34.6235 29.188 34.3393 29.12 34.0671 29.0521 33.8338 29.0029 33.6646 28.8996 33.3146 28.7255 33.0104 28.6013 32.7935 28.3618 32.4823 28.1995 32.2715L28.1904 32.2598C27.9761 31.9814 27.6924 31.6199 27.3706 31.211L27.1274 30.9021 27.1268 30.9013C26.5228 30.1343 25.8047 29.2224 25.0998 28.3063 25.0223 28.2056 24.9452 28.1051 24.8686 28.005L27.6807 22.2118zM20.6068 34.3308L17.7521 30.3627 16.9314 32.7219 11.958 31.5531C10.8827 31.3003 9.80621 31.9672 9.5535 33.0424 9.30079 34.1177 9.96761 35.1943 11.0429 35.447L17.7706 37.0281C18.7677 37.2624 19.7806 36.7057 20.1172 35.7383L20.6068 34.3308z"/>
+          <path fill="#333" fill-rule="evenodd"
+                d="M32.001 12C33.6578 12 35.001 10.6569 35.001 9C35.001 7.34315 33.6578 6 32.001 6C30.3441 6 29.001 7.34315 29.001 9C29.001 10.6569 30.3441 12 32.001 12ZM32.001 14C34.7624 14 37.001 11.7614 37.001 9C37.001 6.23858 34.7624 4 32.001 4C29.2396 4 27.001 6.23858 27.001 9C27.001 11.7614 29.2396 14 32.001 14Z"
+                clip-rule="evenodd"/>
+        </svg>
+
+      </div>
+      <div>
+            <span
+                class="transition-all duration-300 ease-out inline-block text-gray-50 bg-indigo-400 px-4 py-1 rounded-full text-sm tracking-wide hover:bg-opacity-90">
+              {{ workout.type }}
+            </span>
+      </div>
+      <h3 class="mt-2 md:mt-0 text-gray-100 text-lg font-semibold sm:text-xl">{{ workout.name }}</h3>
+    </div>
+
+
+    <div
+        v-if="workout.type === 'Strength'"
+        class="mx-auto md:max-w-xl my-4"
+
+    >
+
+      <div class="flex flex-col gap-y-6 bg-indigo-600 px-4 py-6 rounded-lg shadow-lg shadow-indigo-300">
+
+        <!--        single exercise -->
+        <div class="grid grid-cols-4 gap-y-2 border-b pb-6 border-b-indigo-500"
+             v-for="exercise in workout.exercises"
+             :key="exercise.uid"
+        >
+
+          <!--          header -->
+          <h3 class="text-indigo-100">Exercise</h3>
+          <h3 class="text-indigo-100">Sets</h3>
+          <h3 class="text-indigo-100">Repetitions</h3>
+          <h3 class="text-indigo-100">Weight (LB's)</h3>
+
+          <!--          body -->
+          <h3 class="text-gray-300">{{ exercise.exercise_name }}</h3>
+          <h3 class="text-gray-300">{{ exercise.sets }}</h3>
+          <h3 class="text-gray-300">{{ exercise.reps }}</h3>
+          <h3 class="text-gray-300">{{ exercise.weight }}</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div
+        v-if="workout.type === 'Cardio'"
+        class="mx-auto md:max-w-xl my-4"
+
+    >
+
+      <div class="flex flex-col gap-y-6 bg-indigo-600 px-4 py-6 rounded-lg shadow-lg shadow-indigo-300">
+
+        <!--        single exercise -->
+        <div class="grid grid-cols-4 gap-y-2 border-b pb-6 border-b-indigo-500"
+             v-for="exercise in workout.exercises"
+             :key="exercise.uid"
+        >
+
+          <!--          header -->
+          <h3 class="text-indigo-100">Type</h3>
+          <h3 class="text-indigo-100">Distance</h3>
+          <h3 class="text-indigo-100">Duration</h3>
+          <h3 class="text-indigo-100">Pace</h3>
+
+          <!--          body -->
+          <h3 class="text-gray-300">{{ exercise.exercise_name }}</h3>
+          <h3 class="text-gray-300">{{ exercise.sets }}</h3>
+          <h3 class="text-gray-300">{{ exercise.reps }}</h3>
+          <h3 class="text-gray-300">{{ exercise.weight }}</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </section>
+</template>

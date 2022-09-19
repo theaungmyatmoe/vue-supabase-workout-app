@@ -15,7 +15,7 @@ app.use(router)
 
 app.use(Toast, {
     transition: "Vue-Toastification__bounce",
-    maxToasts: 20,
+    maxToasts: 2,
     newestOnTop: true,
     position: POSITION.TOP_RIGHT
 });

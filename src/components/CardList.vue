@@ -22,8 +22,7 @@ const hasWorkouts = workouts!.length > 0 ?? false;
     <Card
         v-for="workout in workouts"
         :key="workout.id"
-        :name="workout.name"
-        :type="workout.type"
+        :workout="workout"
     />
   </div>
   <div v-else

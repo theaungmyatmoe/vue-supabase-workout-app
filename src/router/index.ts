@@ -3,8 +3,8 @@ import Home from '../views/Home.vue'
 import SignUp from '../views/SignUp.vue'
 import Login from '../views/Login.vue'
 import CreateWorkout from '../components/CreateWorkout.vue'
+import ShowWorkout from '../components/ShowWorkout.vue'
 import {useAuthStore} from "@/stores/auth";
-import {rule} from "postcss";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,7 +31,12 @@ const router = createRouter({
             meta: {
                 requiresAuth: true
             }
-        }
+        },
+        {
+            path: '/show/:id',
+            component: ShowWorkout,
+            name: 'ShowWorkout',
+        },
     ]
 })
 
