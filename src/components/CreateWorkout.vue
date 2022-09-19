@@ -105,14 +105,25 @@ const addExercise = () => {
   }
 
 }
+const toast = useToast()
+
 
 const deleteExercise = (uid: string) => {
+  if (exercises.length === 2) {
+    toast('You cannot delete the exercise', {type: TYPE.WARNING})
+    return;
+  }
+  
   const idx = exercises.findIndex(exercise => exercise.uid === uid)
   exercises.splice(idx, 1)
 }
 
-const toast = useToast()
 const createExercise = async () => {
+
+  if (selected_workout_type.name === 'Select Workout') {
+    toast('Please select the workout type', {type: TYPE.ERROR})
+    return;
+  }
 
   if (workout_name.length <= 0) {
     toast('Work Name must not be empty', {type: TYPE.ERROR})
