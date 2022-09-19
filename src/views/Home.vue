@@ -4,5 +4,12 @@ import CardList from "@/components/CardList.vue";</script>
 
 
 <template>
-  <CardList/>
+  <Suspense>
+    <template #default>
+      <CardList/>
+    </template>
+    <template #fallback>
+      Loading
+    </template>
+  </Suspense>
 </template>

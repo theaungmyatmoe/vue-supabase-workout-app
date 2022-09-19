@@ -6,9 +6,10 @@ import {reactive} from "vue";
 import {supabase} from "@/services/supabase";
 import {uuid} from "@supabase/supabase-js/dist/module/lib/helpers";
 import {TYPE, useToast} from "vue-toastification";
+import {useRouter} from "vue-router";
 
 enum Workout {
-  STRENGTH = 'Strength Trying',
+  STRENGTH = 'Strength',
   CARDIO = 'Cardio'
 }
 
@@ -76,6 +77,7 @@ const cardio = $ref<Cardio>({
   uid: uuid()
 });
 
+const router = useRouter();
 let exercises = reactive([strength, cardio])
 
 const addExercise = () => {
@@ -99,7 +101,6 @@ const addExercise = () => {
       duration: 0
     }
     exercises.push(exercise)
-    console.log(exercises)
     return;
   }
 
@@ -130,6 +131,12 @@ const createExercise = async () => {
   if (error) toast(error.message, {
     type: TYPE.ERROR
   })
+
+  toast('You created workout successfully', {
+    type: TYPE.SUCCESS
+  })
+  await router.push({name: 'Home'})
+
 }
 
 

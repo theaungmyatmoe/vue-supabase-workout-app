@@ -55,10 +55,11 @@ const logout = async () => {
         <div class="hidden sm:flex gap-x-8">
           <router-link :to="{name:'Home'}" class="transition-colors duration-300 text-white hover:text-indigo-50">Home
           </router-link>
-          <!--          TODO: remove for non-authenicated user -->
-          <!--          v-if="user" -->
-          <router-link :to="{name:'CreateWorkout'}"
-                       class="transition-colors duration-300 text-white hover:text-indigo-50">
+          <router-link
+              v-if="user"
+              :to="{name:'CreateWorkout'}"
+              class="transition-colors duration-300 text-white hover:text-indigo-50"
+          >
             Create
           </router-link>
           <router-link v-if="!user" :to="{name:'Login'}"
