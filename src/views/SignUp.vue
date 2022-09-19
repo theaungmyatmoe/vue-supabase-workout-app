@@ -58,7 +58,7 @@ const singUp = async () => {
 </script>
 
 <template>
-  <div class="bg-indigo-600 mx-4 my-8 px-6 py-6 rounded-lg sm:mx-auto sm:max-w-sm md:max-w-lg">
+  <div class="bg-indigo-600 mx-4 px-6 py-6 rounded-lg sm:mx-auto sm:max-w-sm md:max-w-lg">
     <h2 class="text-gray-50 text-xl font-medium mb-6 sm:mb-8 sm:text-2xl">Sign Up</h2>
 
     <!--    sign up form -->
@@ -110,7 +110,7 @@ const singUp = async () => {
 
       <button
           type="submit"
-          class="mt-2 transition-all ease-out duration-300 w-full px-4 py-2.5 flex justify-center items-center text-gray-50 bg-indigo-700 rounded-lg hover:bg-indigo-900/50"
+          class="mt-1 transition-all ease-out duration-300 w-full px-4 py-2.5 flex justify-center items-center text-gray-50 bg-indigo-700 rounded-lg hover:bg-indigo-900/50"
       >
         Sign Up
       </button>
