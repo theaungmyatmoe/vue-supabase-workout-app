@@ -3,6 +3,8 @@ import Home from '../views/Home.vue'
 import SignUp from '../views/SignUp.vue'
 import Login from '../views/Login.vue'
 import CreateWorkout from '../components/CreateWorkout.vue'
+import {useAuthStore} from "@/stores/auth";
+import {rule} from "postcss";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,9 +27,21 @@ const router = createRouter({
         {
             path: '/create',
             component: CreateWorkout,
-            name: 'CreateWorkout'
+            name: 'CreateWorkout',
+            meta: {
+                requiresAuth: true
+            }
         }
     ]
 })
 
-export default router
+router.beforeEach((to, from, next) => {
+    const authStore = useAuthStore();
+    const isLoggedIn = !!authStore.user;
+
+    if (to.meta.requiresAuth && !isLoggedIn) next({name: 'Login'})
+    else next();
+
+})
+
+export default router;
