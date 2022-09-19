@@ -3,6 +3,9 @@ import FormInput from "@/components/FormInput.vue";
 import {Listbox, ListboxButton, ListboxOption, ListboxOptions,} from '@headlessui/vue'
 import {CheckIcon, ChevronUpDownIcon, TrashIcon} from '@heroicons/vue/20/solid'
 import {reactive} from "vue";
+import {supabase} from "@/services/supabase";
+import {uuid} from "@supabase/supabase-js/dist/module/lib/helpers";
+import {TYPE, useToast} from "vue-toastification";
 
 enum Workout {
   STRENGTH = 'Strength Trying',
@@ -28,11 +31,14 @@ interface WorkoutType {
   name: string
 }
 
+
 interface Strength {
   exercise_name: string,
   sets: number,
   reps: number,
-  weight: number
+  weight: number,
+
+  [key: string]: any
 }
 
 type CardioType = "Run" | "Walk"
@@ -42,6 +48,8 @@ interface Cardio {
   distance: number;
   duration: number;
   pace: number;
+
+  [key: string]: any
 }
 
 // check type
@@ -56,7 +64,8 @@ const strength = $ref<Strength>({
   exercise_name: '',
   sets: 0,
   weight: 0,
-  reps: 0
+  reps: 0,
+  uid: uuid()
 })
 
 const cardio = $ref<Cardio>({
@@ -64,28 +73,65 @@ const cardio = $ref<Cardio>({
   duration: 0,
   distance: 0,
   pace: 0,
+  uid: uuid()
 });
 
-const exercises = reactive([strength, cardio])
+let exercises = reactive([strength, cardio])
 
 const addExercise = () => {
   if (selected_workout_type.name === Workout.STRENGTH) {
-    const ex: Strength = {
+    const exercise: Strength = {
       reps: 0,
       weight: 0,
       sets: 0,
       exercise_name: '',
+      uid: uuid()
     }
-    exercises.push(ex)
+    exercises.push(exercise)
     return;
   }
 
   if (selected_workout_type.name === Workout.CARDIO) {
-    console.log('cardio')
+    const exercise: Cardio = {
+      type: selected_cardio_type.name as CardioType,
+      pace: 0,
+      distance: 0,
+      duration: 0
+    }
+    exercises.push(exercise)
+    console.log(exercises)
     return;
   }
 
 }
+
+const deleteExercise = (uid: string) => {
+  const idx = exercises.findIndex(exercise => exercise.uid === uid)
+  exercises.splice(idx, 1)
+}
+
+const toast = useToast()
+const createExercise = async () => {
+
+  if (workout_name.length <= 0) {
+    toast('Work Name must not be empty', {type: TYPE.ERROR})
+    return;
+  }
+
+  const {data, error} = await supabase
+      .from('workouts')
+      .insert([
+        {
+          name: workout_name,
+          type: selected_workout_type.name,
+          exercises
+        },
+      ])
+  if (error) toast(error.message, {
+    type: TYPE.ERROR
+  })
+}
+
 
 </script>
 
@@ -95,8 +141,9 @@ const addExercise = () => {
 
     <h2 class="mb-8 text-lg font-medium sm:text-xl">Record Workout</h2>
 
-    <form class="flex flex-col gap-y-6" @submit.prevent="">
+    <form class="flex flex-col gap-y-6" @submit.prevent="createExercise">
 
+      <!--       workout name -->
       <FormInput
           label="Workout Name"
           type="string"
@@ -199,7 +246,9 @@ const addExercise = () => {
                 v-model="exercise.weight"
             />
             <button
-                class="transition-all duration-300 inline-flex gap-x-2 bg-red-600 text-white rounded-lg px-4 py-2.5 self-end hover:opacity-95">
+                class="transition-all duration-300 inline-flex gap-x-2 bg-red-600 text-white rounded-lg px-4 py-2.5 self-end hover:opacity-95"
+                @click="deleteExercise(exercise.uid)"
+            >
               Delete
               <TrashIcon class="h-6 w-6"/>
             </button>
@@ -306,7 +355,9 @@ const addExercise = () => {
       </section>
 
       <!--      Record workout -->
-      <button class="mt-2 md:mt-6 bg-indigo-800/80 px-4 py-3.5 rounded-lg hover:opacity-90">Record Workout</button>
+      <button type="submit" class="mt-2 md:mt-6 bg-indigo-800/80 px-4 py-3.5 rounded-lg hover:opacity-90">Record
+        Workout
+      </button>
     </form>
   </div>
 </template>
